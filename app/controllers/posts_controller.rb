@@ -29,6 +29,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        current_user.create_activity(@status, 'created')
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -48,6 +49,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if params[:post] && @post.update(post_params)
+        current_user.create_activity(@post, 'updated')
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
