@@ -1,0 +1,11 @@
+<h1>Viewing Pictures</h1>
+
+<%= image_tag(@picture.asset.url(:medium), alt: @picture.caption) %>
+
+<br />
+
+<h3><%= @picture.caption %></h3>
+
+
+<%= link_to 'Edit', edit_picture_path(@picture) %> |
+<%= link_to 'Back', pictures_path %>
