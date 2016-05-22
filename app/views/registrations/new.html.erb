@@ -1,0 +1,14 @@
+<header>
+  <h1>New Registration for <%= link_to(@open_mat.location, @open_mat) %></h1>
+</header>
+
+<%= form_for([@open_mat, @registration]) do |f| %>
+  <%= render "shared/errors", object: @registration %>
+  <fieldset>
+ 
+    <p>
+      <%= f.submit 'Register' %>
+      <%= link_to "Cancel", @open_mat, class: 'button' %>
+    </p>
+  </fieldset>
+<% end %>

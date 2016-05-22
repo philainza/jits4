@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at desc")
   end
 
   # GET /posts/1
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         current_user.create_activity(@post, 'created')
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if params[:post] && @post.update(post_params)
         current_user.create_activity(@post, 'updated')
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to posts_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }

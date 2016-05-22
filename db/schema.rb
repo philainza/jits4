@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521231442) do
+ActiveRecord::Schema.define(version: 20160522094942) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20160521231442) do
   end
 
   add_index "albums", ["user_id"], name: "index_albums_on_user_id"
+
+  create_table "open_mats", force: :cascade do |t|
+    t.string   "location"
+    t.datetime "starts_at"
+    t.time     "ends_at"
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "album_id"
@@ -59,6 +70,15 @@ ActiveRecord::Schema.define(version: 20160521231442) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
+  create_table "registrations", force: :cascade do |t|
+    t.integer  "open_mat_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "registrations", ["open_mat_id"], name: "index_registrations_on_open_mat_id"
+
   create_table "user_friendships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "friend_id"
@@ -73,7 +93,6 @@ ActiveRecord::Schema.define(version: 20160521231442) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "profile_name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -90,6 +109,10 @@ ActiveRecord::Schema.define(version: 20160521231442) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "gender"
+    t.string   "belt_level"
+    t.integer  "age"
+    t.string   "affiliation"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

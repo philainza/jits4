@@ -1,0 +1,29 @@
+<article>
+  <h2>Location:</h2>
+  <p>
+    <%= @open_mat.location %>
+  </p>
+  </p><h3>When:</h3>
+  <p>
+    <%= @open_mat.starts_at %>
+    <%= starts_in(@open_mat) %>
+  </p>
+  <h3><%= link_to pluralize(@open_mat.registrations.size, "Registration"), open_mat_registrations_path(@open_mat) %></h3>
+  <p>
+    <% @open_mat.registrations.each do |r| %>
+    <li>
+      <%= link_to r.user.full_name, profile_path(r.user) %>
+    </li>
+  <% end %>
+  </p>
+  
+  <%= image_tag @open_mat.asset.url(:medium) %>
+
+<footer>
+  <%= link_to "Register!", new_open_mat_registration_path(@open_mat, class: "button ok register") %>
+  <% if host?(@open_mat) %>
+  <%= link_to "Edit", edit_open_mat_path(@open_mat), class: 'btn btn-info btn-xs' %>
+  <%= link_to "Delete", open_mat_path(@open_mat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+  <% end %>
+</footer>
+</article>

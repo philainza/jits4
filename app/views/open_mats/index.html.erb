@@ -1,0 +1,42 @@
+
+
+<div class="container">
+<!-- <h1><%= pluralize(@open_mats.size, 'Open Mat') %></h1> -->
+<div class="container" style="width: 20rem;">
+<%= link_to 'Add New Open Mat', new_open_mat_path, class: "btn btn-primary m-l-3" %>
+</div>
+
+<% @open_mats.each do |open_mat| %>
+  <div class="card text-xs-center center-block m-t-2" style="width: 18rem;">
+    <%= image_tag open_mat.asset.url, class: 'card-img-top img-fluid text-xs-center' %>
+    <!-- <img class="card-img-top" data-src="..." alt="Card image cap"> -->
+    <div class="card-block">
+      <h4><%= link_to open_mat.location, open_mat_path(open_mat), class: 'card-title' %></h4>     
+      <p class="card-text"><%= open_mat.starts_at %> </br>(<%= starts_in(open_mat) %>)</p>
+<!--       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+<!--   <article>
+    <header>
+      <h2><%= link_to open_mat.location, open_mat_path(open_mat), class: 'btn btn-primary btn-xs' %></h2>
+    </header>
+    <table>
+
+      <tr>
+        <th>When:</th>
+        <td><%= open_mat.starts_at %> (<%= starts_in(open_mat) %>)</td>
+      </tr>
+    </table>
+  </article> -->
+<% end %>
+</div>

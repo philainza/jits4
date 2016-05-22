@@ -94,6 +94,10 @@ private
       current_user.requested_user_friendships
     end
   end
+
+  def _params
+    params.require(:registration).permit(:user_id)
+  end
 end
 
 

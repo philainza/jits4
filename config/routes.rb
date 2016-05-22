@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :activities, only: [:index]
 
+  resources :open_mats do 
+    resources :registrations
+  end
+
   devise_for :users
 
   devise_scope :user do 

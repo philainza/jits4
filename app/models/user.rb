@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   validates :last_name, presence: true
 
+  has_many :registrations, dependent: :destroy
+  has_many :open_mats
   has_many :activities
   has_many :albums
   has_many :pictures
