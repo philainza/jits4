@@ -36,6 +36,10 @@ gem 'js-routes'
 
 gem 'paperclip'
 
+gem 'will_paginate'
+
+gem 'bootstrap-will_paginate'
+
 
 
 # Use ActiveModel has_secure_password

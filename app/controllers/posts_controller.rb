@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        current_user.create_activity(@status, 'created')
+        current_user.create_activity(@post, 'created')
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -77,6 +77,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :content)
+      params.require(:post).permit(:user_id, :content, :targetable_id, :targetable_type)
     end
 end

@@ -15,6 +15,7 @@
         </nav>
         <div class="pull-xs-right nav navbar-nav">
           <% if user_signed_in? %>
+            <%= link_to 'Activity Feed', activities_path, class: 'nav-item nav-link' %>
             <%= link_to 'Albums', albums_path(current_user), class: 'nav-item nav-link' %>
             <%= link_to 'Friends', user_friendships_path, class: 'nav-item nav-link' %>
             <%= link_to current_user.full_name, edit_user_registration_path, class: 'nav-item nav-link' %>

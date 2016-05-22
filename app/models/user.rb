@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates :last_name, presence: true
 
-  has_many :activites
+  has_many :activities
   has_many :albums
   has_many :pictures
   has_many :posts

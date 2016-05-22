@@ -9,7 +9,7 @@ class PicturesController < ApplicationController
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.all
+    @pictures = @album.pictures.all
   end
 
   # GET /pictures/1
@@ -20,7 +20,7 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
+    @picture = @album.pictures.new
   end
 
   # GET /pictures/1/edit
@@ -65,7 +65,6 @@ class PicturesController < ApplicationController
   def destroy
     @picture.destroy
     respond_to do |format|
-      current_user.create_activity @picture, 'deleted'
       format.html { redirect_to album_pictures_url(@album), notice: 'Picture was successfully destroyed.' }
       format.json { head :no_content }
     end
