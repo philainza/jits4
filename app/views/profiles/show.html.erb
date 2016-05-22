@@ -1,15 +1,25 @@
-<h1><%= @user.full_name %></h1>
-
 <%= image_tag @user.avatar.url(:medium), class: 'img-circle center-block' %>
+<h3 style="text-align: center"><%= @user.full_name %></h3>
 <% if signed_in? %>
-<div id="friend-status">
+<div id="friend-status" style="text-align: center">
   <% if current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-    <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn btn-primary' %>
+    <%= link_to "Edit Friendship", edit_user_friendship_path(friend_id: @user), class: 'btn btn-primary btn-sm', style: 'text-align: center' %>
   <% else %>
-    <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn btn-primary', id: 'add-friendship', data: { friend_id: @user.to_param } %>
+    <%= link_to "Add Friend", new_user_friendship_path(friend_id: @user), class: 'btn btn-primary btn-sm', id: 'add-friendship', data: { friend_id: @user.to_param } %>
   <% end %>
 </div>
 <% end %>
+
+<div class="container">
+  <h4 style="display: inline;">Gender</h4>
+  <p><%= @user.gender %></p>
+  <h4 style="display: inline;">Age</h4>
+  <p><%= @user.age %></p>
+  <h4 style="display: inline;">Belt Level</h4>
+  <p><%= @user.belt_level %></p>
+  <h4 style="display: inline;">Affiliation</h4>
+  <p><%= @user.affiliation %></p>
+</div>
 
 
 <% if @posts %>

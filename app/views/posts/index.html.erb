@@ -1,20 +1,25 @@
 
-
-<%= link_to "Post Something", new_post_path, class: 'btn btn-primary' %>
+<div style="text-align: center" class="m-t-2">
+  <%= link_to "Say Something", new_post_path, class: 'btn btn-primary' %>
+</div>
 
 <% @posts.each do |post| %>
   <% if can_display_post?(post) %>
     <div class="post">
-      <%= avatar_profile_link post.user, {}, class: 'pull-xs-left' %>
+      <%= avatar_profile_link post.user, size: "64x64", class: 'pull-xs-left m-r-1' %>
+      <div>
       <strong><%= link_to post.user.full_name, profile_path(post.user) %></strong>
       <p><%= post.content %></p>
       <div class="meta">
         <%= link_to time_ago_in_words(post.created_at) + " ago", post %>
         <span class="admin">
+          <% if current_user?(post.user) %>
           | <%= link_to "Edit", edit_post_path(post) %> |
           <%= link_to "Delete", post, method: :delete, data: { confirm: "Are you sure you want to delete this post?"} %>
+          <% end %>
         </span>
       </div>
+    </div>
     </div>
   <% end %>
 <% end %>

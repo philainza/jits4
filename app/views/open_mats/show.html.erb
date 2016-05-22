@@ -1,26 +1,34 @@
 <article>
-  <h2>Location:</h2>
-  <p>
-    <%= @open_mat.location %>
-  </p>
-  </p><h3>When:</h3>
-  <p>
-    <%= @open_mat.starts_at %>
-    <%= starts_in(@open_mat) %>
-  </p>
-  <h3><%= link_to pluralize(@open_mat.registrations.size, "Registration"), open_mat_registrations_path(@open_mat) %></h3>
+  <%= image_tag @open_mat.asset.url(:medium), class: 'center-block' %>
+  <div class="container text-xs-center m-t-2">
+    <h4 style="color: black;">Are you going?</h4>
+    <%= link_to "Yes", new_open_mat_registration_path(@open_mat), class: 'btn btn-success btn-block' %>
+  </div>
+  <div class="m-t-2 container">
+  <h4 style="display: inline">Host:</h4>
+  <%= image_tag @open_mat.user.avatar.url(:thumb), class: 'img-circle m-l-2' %>
+  <%= link_to @open_mat.user.full_name, profile_path(@open_mat.user) %>
+  </div>
+  <div class="container m-t-2">
+    <h4 class="pull-xs-left m-r-2">When:</h4>
+    <p>
+      <%= @open_mat.starts_at %><br />
+      <%= starts_in(@open_mat) %>
+    </p>
+  </div>
+  <div class="container text-xs-center m-t-2">
+  <h4><%= pluralize(@open_mat.registrations.size, "Person") %> Going</h4>
   <p>
     <% @open_mat.registrations.each do |r| %>
-    <li>
+    <div>
+      <%= image_tag r.user.avatar.url(:thumb), class: 'img-circle' %>
       <%= link_to r.user.full_name, profile_path(r.user) %>
-    </li>
+    </div>
   <% end %>
   </p>
-  
-  <%= image_tag @open_mat.asset.url(:medium) %>
+
 
 <footer>
-  <%= link_to "Register!", new_open_mat_registration_path(@open_mat, class: "button ok register") %>
   <% if host?(@open_mat) %>
   <%= link_to "Edit", edit_open_mat_path(@open_mat), class: 'btn btn-info btn-xs' %>
   <%= link_to "Delete", open_mat_path(@open_mat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>

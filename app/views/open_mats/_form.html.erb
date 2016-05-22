@@ -1,18 +1,27 @@
 <%= form_for @open_mat, :html => {:multipart => true} do |f| %>
   <%= render "shared/errors", object: @open_mat %>
-  <p>
-    <%= f.label :location %><br/>
-    <%= f.text_field :location, autofocus: true %>
-  </p>
-  <p>
+  <fieldset class="form-group">
+    <%= f.label :street_address %><br/>
+    <%= f.text_field :street_address, class: 'form-control', placeholder: 'e.g. 123 Main St.', autofocus: true %>
+  </fieldset>
+    <fieldset class="form-group">
+    <%= f.label :city %><br/>
+    <%= f.text_field :city, class: 'form-control', placeholder: 'City', autofocus: true %>
+  </fieldset>
+  <fieldset class="form-group">
+    <%= f.label :state %><br/>
+    <%= f.text_field :state, class: 'form-control', placeholder: 'e.g. CA', autofocus: true %>
+  </fieldset>
+  <fieldset class="form-group">
     <%= f.label :starts_at %>
-    <%= f.datetime_local_field :starts_at %>
-  </p>
-  <p>
+    <%= f.datetime_local_field :starts_at, class: 'form-control' %>
+  </fieldset>
+  <div class="form-group">
+    <%= f.label :open_mat_photo %>
     <%= f.file_field :asset %>
-  </p>
-  <p>
-    <%= f.submit %> |
-    <%= link_to "Cancel", open_mats_path %>
-  </p>
+  </div>
+  <div class="actions m-t-3">
+    <%= f.submit class: 'btn btn-primary btn-block' %>
+    <%= link_to "Cancel", open_mats_path, class: 'btn btn-danger-outline btn-block m-t-2' %>
+  </div>
 <% end %>

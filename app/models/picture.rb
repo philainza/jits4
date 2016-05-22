@@ -3,6 +3,7 @@ class Picture < ActiveRecord::Base
   belongs_to :user
 
   has_attached_file :asset, styles: {
+    large: '300x300>',
     medium: '200x200#',
     small: '140x140#',
     thumb: '64x64#'

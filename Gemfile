@@ -40,6 +40,10 @@ gem 'will_paginate'
 
 gem 'bootstrap-will_paginate'
 
+group :deployment do 
+  gem 'pg'
+end
+
 
 
 # Use ActiveModel has_secure_password

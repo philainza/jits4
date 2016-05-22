@@ -31,7 +31,7 @@ class AlbumsController < ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice: 'Album was successfully created.' }
+        format.html { redirect_to albums_path, notice: 'Album was successfully created.' }
         format.json { render :show, status: :created, location: @album }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class AlbumsController < ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.html { redirect_to @album, notice: 'Album was successfully updated.' }
+        format.html { redirect_to albums_path, notice: 'Album was successfully updated.' }
         format.json { render :show, status: :ok, location: @album }
       else
         format.html { render :edit }

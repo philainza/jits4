@@ -10,11 +10,8 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset class="form-group m-t-2">
+    <%= f.text_area :content, class: 'form-control', placeholder: 'Say Something...' %>
+  </fieldset>
+  <%= f.submit class: 'btn btn-primary center-block m-b-2' %>
 <% end %>

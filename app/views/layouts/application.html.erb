@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Jitslist4</title>
+  <title>Jitslist</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div class="navbar navbar-fixed-top bg-inverse">
-      <div class="container">
-        <a href="#" class="navbar-brand" style="color: #1DA597;">JitsList</a>
-        <nav class="nav navbar-nav">
-          <%= link_to "All Posts", feed_path, class: 'nav-item nav-link' %>
-        </nav>
-        <div class="pull-xs-right nav navbar-nav">
-          <% if user_signed_in? %>
-            <%= link_to 'All Open Mats', open_mats_path, class: 'nav-item nav-link' %>
-            <%= link_to 'Activity Feed', activities_path, class: 'nav-item nav-link' %>
-            <%= link_to 'Albums', albums_path(current_user), class: 'nav-item nav-link' %>
-            <%= link_to 'Friends', user_friendships_path, class: 'nav-item nav-link' %>
-            <%= link_to current_user.full_name, edit_user_registration_path, class: 'nav-item nav-link' %>
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'nav-item nav-link' %>
-            <% else %>
-              <%= link_to "Sign Up", signup_path, class: 'nav-item nav-link' %>
-              <%= link_to "Sign In", signin_path, class: 'nav-item nav-link' %>
-            <% end %>
-        </div>
-      </div>
+<body class="text-primary">
+<div class="collapse" id="exCollapsingNavbar">
+  <div class="p-a-1">
+    <% if user_signed_in? %>
+      <%= link_to "All Posts", feed_path, class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+      <%= link_to 'All Open Mats', open_mats_path, class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+      <%= link_to 'Activity Feed', activities_path, class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+      <%= link_to 'Albums', albums_path(current_user), class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+      <%= link_to 'Friends', user_friendships_path, class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+      <%= link_to 'Edit Account', edit_user_registration_path, class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'nav-item nav-link btn btn-primary-outline btn-block' %>
+    <% end %>
   </div>
-  <div class="container">
+</div>
+<nav class="navbar bg-inverse navbar-fixed-top">
+  <%= link_to 'JitsList', root_path, class: 'navbar-brand' %>
+  <div class="pull-xs-right">
+  <% if user_signed_in? %>
+    <%= link_to current_user.full_name, profile_path(current_user), class: 'nav-item nav-link' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
+    &#9776;
+  </button>
+  <% end %>
+  </div>
+</nav>
+  <div class="container m-t-2">
 
     
     <%= yield %>

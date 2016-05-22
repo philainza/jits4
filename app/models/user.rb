@@ -36,9 +36,12 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, styles: {
     medium: '200x200#',
     small: '140x140#',
-    thumb: '64x64#'
-  }
+    thumb: '64x64#',
+  },
+    default_url: "default-profile.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  
 
   def full_name
     first_name + " " + last_name

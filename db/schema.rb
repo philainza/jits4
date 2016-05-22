@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522094942) do
+ActiveRecord::Schema.define(version: 20160522171113) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
@@ -43,6 +43,11 @@ ActiveRecord::Schema.define(version: 20160522094942) do
     t.integer  "asset_file_size"
     t.datetime "asset_updated_at"
     t.integer  "user_id"
+    t.string   "host"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -113,6 +118,7 @@ ActiveRecord::Schema.define(version: 20160522094942) do
     t.string   "belt_level"
     t.integer  "age"
     t.string   "affiliation"
+    t.string   "host"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

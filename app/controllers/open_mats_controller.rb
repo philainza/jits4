@@ -47,6 +47,6 @@ class OpenMatsController < ApplicationController
   private
 
     def open_mat_params
-      params.require(:open_mat).permit(:location, :starts_at, :asset, :user_id)
+      params.require(:open_mat).permit(:location, :starts_at, :asset, :user_id, :host, :street_address, :city, :state, :country)
     end
 end

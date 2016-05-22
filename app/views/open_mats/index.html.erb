@@ -8,12 +8,15 @@
 
 <% @open_mats.each do |open_mat| %>
   <div class="card text-xs-center center-block m-t-2" style="width: 18rem;">
-    <%= image_tag open_mat.asset.url, class: 'card-img-top img-fluid text-xs-center' %>
-    <!-- <img class="card-img-top" data-src="..." alt="Card image cap"> -->
+      <%= image_tag open_mat.asset.url, class: 'card-img-top img-fluid text-xs-center' %>
     <div class="card-block">
-      <h4><%= link_to open_mat.location, open_mat_path(open_mat), class: 'card-title' %></h4>     
-      <p class="card-text"><%= open_mat.starts_at %> </br>(<%= starts_in(open_mat) %>)</p>
-<!--       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+      <h4 class="card-title"><%= open_mat.city %></h4>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><%= open_mat.starts_at %> </br>(<%= starts_in(open_mat) %>)</li>
+    </ul>
+    <div class="card-block">
+      <%= link_to "See Details", open_mat_path(open_mat), class: 'btn btn-primary-outline' %>
     </div>
   </div>
 

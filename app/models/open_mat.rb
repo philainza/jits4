@@ -1,7 +1,7 @@
 class OpenMat < ActiveRecord::Base
   belongs_to :user
 
-  validates :location, :starts_at, presence: true
+  validates :street_address, :city, :state, :starts_at, :asset, presence: true
 
   has_attached_file :asset, styles: {
     large: '400x400>',

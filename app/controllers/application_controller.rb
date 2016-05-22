@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:avatar, :password, :password_confirmation, :email, :current_password) }    
   end
 
+  def current_user?(user)
+    current_user == user
+  end
+
+  helper_method :current_user?
+
 end

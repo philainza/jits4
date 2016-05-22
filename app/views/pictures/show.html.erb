@@ -1,11 +1,13 @@
-<h1>Viewing Pictures</h1>
+<h3 class="text-xs-center">Viewing Pictures</h3>
 
-<%= image_tag(@picture.asset.url(:medium), alt: @picture.caption) %>
+<div class="text-xs-center">
+  <%= image_tag(@picture.asset.url(:large), alt: @picture.caption) %>
 
-<br />
+  <br />
 
-<h3><%= @picture.caption %></h3>
+  <h3><%= @picture.caption %></h3>
 
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+  <%= link_to 'Edit', edit_album_picture_path(@album, @picture) %> |
+  <%= link_to 'Back', album_pictures_path(@album) %>
+</div>

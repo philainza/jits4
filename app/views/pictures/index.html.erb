@@ -1,10 +1,10 @@
 <% if signed_in? && current_user == @user %>
-<%= link_to 'Add Picture', new_album_picture_path(current_user, @album), class: 'btn btn-primary pull-xs-right' %>
+
+<h3 class="text-xs-center"><%= @album.title %></h3>
+<%= link_to 'Add Picture', new_album_picture_path(current_user, @album), class: 'btn btn-primary btn-block m-b-2' %>
 <% end %>
 
-<h1><%= @album.title %></h1>
-
-
+<div class="text-xs-center">
 <% @pictures.each do |picture| %>
   <div class="thumbnail">
     <%= link_to image_tag(picture.asset.url(:small)), album_picture_path(@user, @album, picture) %><br />
@@ -22,4 +22,5 @@
       </div>
   </div>
 <% end %>
+</div>
 
